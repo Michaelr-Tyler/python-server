@@ -1,3 +1,6 @@
+import employees
+
+
 EMPLOYEES = [
     {
       "name": "Sam",
@@ -35,3 +38,18 @@ def create_employee(employee):
   employee["id"] = new_id
   EMPLOYEES.append(employee)
   return employee
+
+def delete_employee(id):
+  # Initial -1 value for employees index, in case one isn't found
+  employees_index = -1
+
+  # Iterate the EMPLOYEES list, but use enumerate() so that you
+  # can access the index value of each item
+  for index, employees in enumerate(EMPLOYEES):
+      if employees["id"] == id:
+          # Found the employees. Store the current index.
+          employees_index = index
+
+  # If the employees was found, use pop(int) to remove it from list
+  if employees_index >= 0:
+      EMPLOYEES.pop(employees_index)
