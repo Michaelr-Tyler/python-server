@@ -1,3 +1,6 @@
 __pycache__
 .vscode
 launch.json
+.gitignore
+Pipfile
+Pipfile.lock
