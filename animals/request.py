@@ -19,6 +19,20 @@ ANIMALS = [
         "species": "Cat",
         "locationId": 2,
         "customerId": 1
+    },
+    {
+        "id": 4,
+        "name": "Maximus",
+        "species": "Cat",
+        "locationId": 2,
+        "customerId": 1
+    },
+    {
+        "id": 4,
+        "name": "Chance",
+        "species": "Cat",
+        "locationId": 2,
+        "customerId": 1
     }
 ]
 

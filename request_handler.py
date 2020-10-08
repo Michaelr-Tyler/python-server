@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from http.server import BaseHTTPRequestHandler, HTTPServer
 from animals import get_all_animals, get_single_animal
+from locations import get_single_location, get_all_locations
 
 
 # Here's a class. It inherits from another class.
@@ -48,8 +48,16 @@ class HandleRequests(BaseHTTPRequestHandler):
             else:
                 response = f"{get_all_animals()}"
 
-        self.wfile.write(response.encode())
 
+        if resource == "locations":
+            if id is not None:
+                response = f"{get_single_location(id)}"
+            else:
+                response = f"{get_all_locations()}"
+
+       
+
+        self.wfile.write(response.encode())
     # Here's a method on the class that overrides the parent's method.
     # It handles any POST request.
     def do_POST(self):
@@ -74,3 +82,6 @@ def main():
     host = ''
     port = 8088
     HTTPServer((host, port), HandleRequests).serve_forever()
+
+if __name__ == "__main__":
+    main()
