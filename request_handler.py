@@ -3,6 +3,7 @@ from animals import get_all_animals, get_single_animal, create_animal, delete_an
 from locations import get_single_location, get_all_locations, create_location, delete_location, update_location
 from employees import get_all_employees, get_single_employee, create_employee, delete_employee, update_employee
 from customers import get_single_customer, get_all_customers, create_customer, delete_customer, update_customer
+from models import Animal
 import json
 
 # Here's a class. It inherits from another class.
