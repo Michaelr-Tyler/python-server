@@ -72,27 +72,6 @@ def get_single_customer(id):
 
         return json.dumps(customer.__dict__)
 
-# def get_single_customer(id):
-#     with sqlite3.connect("./kennel.db") as conn:
-#         conn.row_factory = sqlite3.Row
-#         db_cursor = conn.cursor()
-
-#         db_cursor.execute("""
-#         SELECT
-#             c.id,
-#             c.name,
-#             c.address,
-#             c.email,
-#             c.password
-#         FROM customer c
-#         WHERE c.id = ?
-#         """, ( id, ))
-
-#         data = db_cursor.fetchone()
-
-#         customer= Customer(data['id'], data['name'], data['address'], data['email'], data['password'])
-
-#         return json.dumps(customer.__dict__)
 
 def create_customer(customer):
   max_id = CUSTOMERS[-1]["id"]
