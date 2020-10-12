@@ -18,7 +18,7 @@ CREATE TABLE `Animal` (
 	`status` TEXT NOT NULL,
 	`breed` TEXT NOT NULL,
 	`customer_id` INTEGER NOT NULL,
-	`location_id` INTEGER,
+	`location_id` INTEGER NOT NULL,
 	FOREIGN KEY(`customer_id`) REFERENCES `Customer`(`id`),
 	FOREIGN KEY(`location_id`) REFERENCES `Location`(`id`)
 );
@@ -55,7 +55,7 @@ INSERT INTO `Customer` VALUES (null, "Emily Lemmon", "454 Mulberry Way", "emily@
 
 INSERT INTO `Animal` VALUES (null, "Snickers", "Recreation", "Dalmation", 4, 1);
 INSERT INTO `Animal` VALUES (null, "Jax", "Treatment", "Beagle", 1, 1);
-INSERT INTO `Animal` VALUES (null, "Falafel", "Treatment", "Siamese", 4, 2);
+INSERT INTO `Animal` VALUES (null, "Falafel", "Siamese", "Treatment", 4, 2);
 INSERT INTO `Animal` VALUES (null, "Doodles", "Kennel", "Poodle", 3, 1);
 INSERT INTO `Animal` VALUES (null, "Daps", "Kennel", "Boxer", 2, 2);
 
@@ -64,3 +64,23 @@ SELECT * FROM `Location`;
 SELECT * FROM `Customer`;
 SELECT * FROM `Animal`;
 SELECT * FROM `Employee`;
+
+SELECT
+	a.id,
+	a.name,
+	a.breed,
+	a.status,
+	a.customer_id,
+	a.location_id
+FROM animal a 
+WHERE a.id = 2;
+
+SELECT
+	c.id,
+	c.name,
+	c.address,
+	c.email,
+	c.password
+FROM customer c
+WHERE c.id = 2;
+
