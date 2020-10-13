@@ -1,5 +1,5 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from animals import get_all_animals, get_single_animal, create_animal, delete_animal, update_animal, get_animal_by_location
+from animals import get_all_animals, get_single_animal, create_animal, delete_animal, update_animal, get_animal_by_location, get_animal_by_status
 from locations import get_single_location, get_all_locations, create_location, delete_location, update_location
 from employees import get_all_employees, get_single_employee, create_employee, delete_employee, update_employee, get_employee_by_location
 from customers import get_single_customer, get_all_customers, create_customer, delete_customer, update_customer, get_customers_by_email
@@ -86,6 +86,9 @@ class HandleRequests(BaseHTTPRequestHandler):
             
             elif key == "location_id" and resource == "animals":
                 response = get_animal_by_location(value)
+            
+            elif key == "status" and resource == "animals":
+                response = get_animal_by_status(value)
 
             elif key == "location_id" and resource == "employees":
                 response = get_employee_by_location(value)
