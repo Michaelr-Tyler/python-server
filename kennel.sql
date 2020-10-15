@@ -67,13 +67,17 @@ SELECT * FROM `Employee`;
 
 SELECT
 	a.id,
-	a.name,
+	a.name animal_name,
 	a.breed,
 	a.status,
 	a.customer_id,
-	a.location_id
+	a.location_id,
+	c.name customer_name,
+	l.name location_name
 FROM animal a 
-WHERE a.id = 2;
+JOIN Customer c ON c.id = a.customer_id
+JOIN Location l ON l.id = a.location_id
+WHERE a.id = ?;
 
 SELECT
 	c.id,
