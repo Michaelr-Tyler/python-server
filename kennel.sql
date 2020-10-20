@@ -66,6 +66,12 @@ SELECT * FROM `Animal`;
 SELECT * FROM `Employee`;
 
 SELECT
+	l.id,
+	l.name,
+	l.address
+FROM Location l
+
+SELECT
 	a.id,
 	a.name animal_name,
 	a.breed,
