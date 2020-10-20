@@ -3,7 +3,6 @@ from animals import get_all_animals, get_single_animal, create_animal, delete_an
 from locations import get_single_location, get_all_locations, create_location, delete_location, update_location
 from employees import get_all_employees, get_single_employee, create_employee, delete_employee, update_employee, get_employee_by_location
 from customers import get_single_customer, get_all_customers, create_customer, delete_customer, update_customer, get_customers_by_email
-from models import Customer
 import json
 
 
@@ -45,6 +44,13 @@ class HandleRequests(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'application/json')
         self.send_header('Access-Control-Allow-Origin', '*')
         self.end_headers()
+    
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+        self.send_header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type')
+        self.end_headers()
 
     # Get request
     def do_GET(self):
@@ -71,6 +77,20 @@ class HandleRequests(BaseHTTPRequestHandler):
                     response = f"{get_single_customer(id)}"
                 else:
                     response = f"{get_all_customers()}"
+            elif resource == "locations":
+                if id is not None:
+                    response = f"{get_single_location(id)}"
+                else: 
+                    response = f"{get_all_locations()}"
+            # elif resource == "":
+            #     if id is not None:
+            #         response = f"{get_all_locations()}"
+
+            elif resource == "employees":
+                if id is not None:
+                    response = f"{get_single_employee(id)}"
+                else: 
+                    response = f"{get_all_employees()}"
 
         # Response from parse_url() is a tuple with 3
         # items in it, which means the request was for
@@ -183,6 +203,7 @@ class HandleRequests(BaseHTTPRequestHandler):
 
     # Encode the new animal and send in response
         self.wfile.write("".encode())
+
 
 
 # This function is not inside the class. It is the starting
